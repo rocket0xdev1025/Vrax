@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commander Vrax | $VRAX</title>
+  <meta name="description" content="Commander Vrax, the fearless cat commander bringing sharp claws, bold memes, and RobinHood chaos." />
+  <link rel="icon" href="logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vrax: {
+              cream: "#f3d7b5",
+              fur: "#e8c49a",
+              rust: "#c47a4a",
+              crimson: "#ff2a4a",
+              cyan: "#3ee0ff",
+              ice: "#9ef6ff",
+              void: "#05070c"
+            }
+          },
+          fontFamily: {
+            display: ["Orbitron", "sans-serif"],
+            body: ["Rajdhani", "sans-serif"],
+            mono: ["Share Tech Mono", "monospace"]
+          },
+          boxShadow: {
+            hud: "0 0 24px rgba(62,224,255,0.35), inset 0 0 24px rgba(255,42,74,0.08)",
+            glow: "0 0 40px rgba(62,224,255,0.45)"
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ca: "TBA"; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #05070c;
+      background-image: linear-gradient(180deg, rgba(5,7,12,0.62) 0%, rgba(5,7,12,0.78) 40%, rgba(5,7,12,0.92) 100%), url("banner.jpg");
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
+    }
+    .scanlines {
+      pointer-events: none;
+      background: repeating-linear-gradient(0deg, rgba(0,0,0,0.16) 0px, rgba(0,0,0,0.16) 1px, transparent 1px, transparent 3px);
+    }
+    .hud-frame {
+      position: relative;
+      clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
+    }
+    .hud-frame::before,
+    .hud-frame::after {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      pointer-events: none;
+    }
+    .hud-frame::before {
+      top: 0; left: 0;
+      border-top: 2px solid #3ee0ff;
+      border-left: 2px solid #3ee0ff;
+    }
+    .hud-frame::after {
+      right: 0; bottom: 0;
+      border-right: 2px solid #ff2a4a;
+      border-bottom: 2px solid #ff2a4a;
+    }
+    .grid-overlay {
+      background-image:
+        linear-gradient(rgba(62,224,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(62,224,255,0.06) 1px, transparent 1px);
+      background-size: 42px 42px;
+    }
+    .pulse-ring {
+      animation: pulseRing 2.8s ease-out infinite;
+    }
+    @keyframes pulseRing {
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(1.35); opacity: 0; }
+    }
+    .float-slow { animation: floatY 6s ease-in-out infinite; }
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .ticker {
+      animation: ticker 28s linear infinite;
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .btn-cyan {
+      background: linear-gradient(135deg, #3ee0ff, #1aa8c4);
+      box-shadow: 0 0 22px rgba(62,224,255,0.45);
+    }
+    .btn-crimson {
+      background: linear-gradient(135deg, #ff2a4a, #b3142e);
+      box-shadow: 0 0 22px rgba(255,42,74,0.4);
+    }
+    .logo-ring {
+      box-shadow: 0 0 0 2px rgba(62,224,255,0.7), 0 0 28px rgba(255,42,74,0.35);
+    }
+  </style>
+</head>
+<body class="font-body text-vrax-cream antialiased">
+  <div class="fixed inset-0 scanlines z-50 mix-blend-overlay opacity-40"></div>
+  <div class="fixed inset-0 grid-overlay z-0 pointer-events-none"></div>
+
+  <header class="sticky top-0 z-40 border-b border-cyan-400/20 bg-black/55 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
+      <a href="#top" class="flex items-center gap-3">
+        <img src="logo.png" alt="Commander Vrax logo" class="h-12 w-12 rounded-full object-cover logo-ring" />
+        <div>
+          <p class="font-display text-sm tracking-[0.28em] text-vrax-cyan">FLEET COMMAND</p>
+          <p class="font-display text-lg font-extrabold text-white">COMMANDER VRAX</p>
+        </div>
+      </a>
+      <nav class="hidden items-center gap-6 text-sm font-display tracking-widest md:flex">
+        <a href="#about" class="hover:text-vrax-cyan">INTEL</a>
+        <a href="#buy" class="hover:text-vrax-cyan">MISSION</a>
+        <a href="#chart" class="hover:text-vrax-cyan">RADAR</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="https://x.com/CommanderVrax_x" target="_blank" rel="noopener noreferrer" class="grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-black/60 hover:border-vrax-cyan">
+          <img src="x.png" alt="X / Twitter" class="h-5 w-5 object-contain invert" />
+        </a>
+        <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="btn-crimson hidden rounded-sm px-4 py-2 font-display text-xs font-bold tracking-widest text-white sm:inline-block">BUY NOW</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="relative overflow-hidden">
+      <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 lg:grid-cols-2 lg:py-24">
+        <div>
+          <p class="mb-4 inline-flex items-center gap-2 border border-vrax-crimson/50 bg-vrax-crimson/10 px-3 py-1 font-mono text-xs tracking-[0.3em] text-vrax-crimson">
+            // SPACE ARMY STATUS: ONLINE
+          </p>
+          <h1 class="font-display text-4xl font-extrabold leading-tight text-white sm:text-6xl">
+            COMMANDER<br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-vrax-cyan via-white to-vrax-crimson">VRAX</span>
+          </h1>
+          <p class="mt-2 font-display text-xl tracking-[0.4em] text-vrax-cyan">$VRAX</p>
+          <p class="mt-6 max-w-xl text-xl font-medium leading-relaxed text-vrax-fur">
+            Commander Vrax, the fearless cat commander bringing sharp claws, bold memes, and RobinHood chaos.
+          </p>
+          <p class="mt-4 max-w-xl text-lg text-white/80">
+            From the neon corridors of the fleet, Vrax leads the meme battalion. No retreat. No mercy. Only claws, chaos, and $VRAX.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="btn-crimson hud-frame px-7 py-3 font-display text-sm font-bold tracking-[0.2em] text-white">BUY NOW</a>
+            <a href="https://dexscreener.com/robinhood/TBA" target="_blank" rel="noopener noreferrer" class="btn-cyan hud-frame px-7 py-3 font-display text-sm font-bold tracking-[0.2em] text-black">CHART</a>
+          </div>
+
+          <div class="mt-8 hud-frame border border-vrax-cyan/30 bg-black/55 p-4 shadow-hud">
+            <p class="font-mono text-[11px] tracking-[0.35em] text-vrax-cyan">CONTRACT ADDRESS</p>
+            <div class="mt-2 flex flex-wrap items-center gap-3">
+              <code id="ca-text" class="break-all font-mono text-lg text-vrax-cream">TBA</code>
+              <button type="button" id="copy-ca" class="border border-vrax-cyan/60 px-3 py-1 font-display text-xs tracking-widest text-vrax-cyan hover:bg-vrax-cyan hover:text-black">
+                COPY CA
+              </button>
+              <span id="copied" class="hidden font-mono text-xs text-vrax-cyan">COPIED TO COMM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative mx-auto w-full max-w-md">
+          <div class="pulse-ring absolute inset-6 rounded-full border border-vrax-cyan/40"></div>
+          <div class="pulse-ring absolute inset-0 rounded-full border border-vrax-crimson/30" style="animation-delay: 1s;"></div>
+          <div class="float-slow relative overflow-hidden rounded-full border-2 border-vrax-cyan/70 logo-ring">
+            <img src="logo.png" alt="Commander Vrax" class="aspect-square w-full object-cover" />
+          </div>
+          <p class="mt-4 text-center font-mono text-xs tracking-[0.4em] text-vrax-cyan">CAT COMMANDER // ROBINHOOD CHAIN</p>
+        </div>
+      </div>
+
+      <div class="border-y border-vrax-cyan/20 bg-black/70 overflow-hidden">
+        <div class="ticker flex w-[200%] gap-10 py-3 font-display text-xs tracking-[0.4em] text-vrax-cyan">
+          <span>COMMANDER VRAX · $VRAX · SHARP CLAWS · BOLD MEMES · ROBINHOOD CHAOS · SPACE ARMY · NO RETREAT · FEARLESS CAT COMMANDER · COMMANDER VRAX · $VRAX · SHARP CLAWS · BOLD MEMES · ROBINHOOD CHAOS · SPACE ARMY · NO RETREAT · FEARLESS CAT COMMANDER ·</span>
+          <span>COMMANDER VRAX · $VRAX · SHARP CLAWS · BOLD MEMES · ROBINHOOD CHAOS · SPACE ARMY · NO RETREAT · FEARLESS CAT COMMANDER · COMMANDER VRAX · $VRAX · SHARP CLAWS · BOLD MEMES · ROBINHOOD CHAOS · SPACE ARMY · NO RETREAT · FEARLESS CAT COMMANDER ·</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="relative mx-auto max-w-7xl px-4 py-20">
+      <p class="font-mono text-xs tracking-[0.4em] text-vrax-crimson">01 // INTEL BRIEFING</p>
+      <h2 class="mt-2 font-display text-3xl font-extrabold text-white sm:text-5xl">THE COMMANDER</h2>
+      <div class="mt-10 grid gap-6 lg:grid-cols-3">
+        <article class="hud-frame border border-vrax-cyan/25 bg-black/60 p-6 shadow-hud">
+          <h3 class="font-display text-lg tracking-widest text-vrax-cyan">SHARP CLAWS</h3>
+          <p class="mt-3 text-lg text-white/80">Vrax does not negotiate with weak charts. Every candle is a battlefield. Every holder is a soldier in the fleet.</p>
+        </article>
+        <article class="hud-frame border border-vrax-crimson/30 bg-black/60 p-6 shadow-hud">
+          <h3 class="font-display text-lg tracking-widest text-vrax-crimson">BOLD MEMES</h3>
+          <p class="mt-3 text-lg text-white/80">The fearless cat commander weaponizes memes. Propaganda from the neon hangar. Culture as artillery.</p>
+        </article>
+        <article class="hud-frame border border-vrax-fur/30 bg-black/60 p-6 shadow-hud">
+          <h3 class="font-display text-lg tracking-widest text-vrax-fur">ROBINHOOD CHAOS</h3>
+          <p class="mt-3 text-lg text-white/80">Deployed on RobinHood. Powered by ETH. Built for chaos. Commander Vrax brings the space army to the chain.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="buy" class="relative mx-auto max-w-7xl px-4 py-10 pb-20">
+      <p class="font-mono text-xs tracking-[0.4em] text-vrax-cyan">02 // HOW TO BUY</p>
+      <h2 class="mt-2 font-display text-3xl font-extrabold text-white sm:text-5xl">JOIN THE FLEET</h2>
+      <p class="mt-4 max-w-2xl text-lg text-vrax-fur">Acquire $VRAX with RobinHood ETH in four classified steps. Follow the briefing. Enlist immediately.</p>
+
+      <ol class="mt-10 grid gap-5 md:grid-cols-2">
+        <li class="hud-frame relative border border-vrax-cyan/25 bg-black/65 p-6">
+          <span class="font-display text-5xl font-extrabold text-vrax-cyan/30">01</span>
+          <h3 class="mt-2 font-display text-xl tracking-widest text-white">GET A WALLET</h3>
+          <p class="mt-2 text-lg text-white/80">Install a Web3 wallet such as MetaMask or Rabby. This is your hangar bay — the only way to board Commander Vrax’s fleet.</p>
+        </li>
+        <li class="hud-frame relative border border-vrax-cyan/25 bg-black/65 p-6">
+          <span class="font-display text-5xl font-extrabold text-vrax-crimson/35">02</span>
+          <h3 class="mt-2 font-display text-xl tracking-widest text-white">LOAD ROBINHOOD ETH</h3>
+          <p class="mt-2 text-lg text-white/80">Fund your wallet with ETH on RobinHood. That fuel powers every swap, every claw strike, every candle Vrax prints.</p>
+        </li>
+        <li class="hud-frame relative border border-vrax-cyan/25 bg-black/65 p-6">
+          <span class="font-display text-5xl font-extrabold text-vrax-cyan/30">03</span>
+          <h3 class="mt-2 font-display text-xl tracking-widest text-white">OPEN UNISWAP</h3>
+          <p class="mt-2 text-lg text-white/80">Hit <strong class="text-vrax-cyan">BUY NOW</strong>. Connect on RobinHood chain. Lock targeting on $VRAX. Confirm you are swapping into the commander’s token.</p>
+        </li>
+        <li class="hud-frame relative border border-vrax-cyan/25 bg-black/65 p-6">
+          <span class="font-display text-5xl font-extrabold text-vrax-crimson/35">04</span>
+          <h3 class="mt-2 font-display text-xl tracking-widest text-white">SWAP FOR $VRAX</h3>
+          <p class="mt-2 text-lg text-white/80">Paste the CA if needed, swap RobinHood ETH for $VRAX, and report for duty. You are now part of the space army.</p>
+        </li>
+      </ol>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="btn-crimson hud-frame px-8 py-3 font-display text-sm font-bold tracking-[0.25em] text-white">BUY NOW</a>
+        <a href="https://dexscreener.com/robinhood/TBA" target="_blank" rel="noopener noreferrer" class="btn-cyan hud-frame px-8 py-3 font-display text-sm font-bold tracking-[0.25em] text-black">CHART</a>
+      </div>
+    </section>
+
+    <section id="chart" class="relative mx-auto max-w-7xl px-4 pb-24">
+      <p class="font-mono text-xs tracking-[0.4em] text-vrax-crimson">03 // LIVE RADAR</p>
+      <h2 class="mt-2 font-display text-3xl font-extrabold text-white sm:text-5xl">DEXSCREENER</h2>
+      <p class="mt-4 text-lg text-white/75">Track the commander’s battlefield in real time.</p>
+      <div class="mt-8 hud-frame overflow-hidden border border-vrax-cyan/30 bg-black/70 shadow-hud">
+        <iframe
+          title="Dexscreener $VRAX chart"
+          src="https://dexscreener.com/robinhood/TBA?embed=1&theme=dark&trades=1&info=1"
+          class="h-[640px] w-full border-0"
+          allow="clipboard-write"
+        ></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-vrax-cyan/20 bg-black/80 py-10">
+    <div class="mx-auto flex max-w-7xl flex-col items-center gap-4 px-4 text-center">
+      <img src="logo.png" alt="" class="h-16 w-16 rounded-full object-cover logo-ring" />
+      <p class="font-display text-lg tracking-[0.3em] text-white">COMMANDER VRAX · $VRAX</p>
+      <p class="max-w-xl text-white/70">Commander Vrax, the fearless cat commander bringing sharp claws, bold memes, and RobinHood chaos.</p>
+      <a href="https://x.com/CommanderVrax_x" target="_blank" rel="noopener noreferrer" class="mt-2 inline-flex items-center gap-2 border border-white/20 px-4 py-2 font-display text-xs tracking-widest hover:border-vrax-cyan">
+        <img src="x.png" alt="" class="h-4 w-4 invert" /> FOLLOW THE COMMANDER
+      </a>
+      <p class="mt-4 font-mono text-[10px] tracking-widest text-white/40">MEME TOKEN. NOT FINANCIAL ADVICE. DYOR. CLAWS OUT.</p>
+    </div>
+  </footer>
+
+  <script>
+    const CA = "TBA";
+    const btn = document.getElementById("copy-ca");
+    const note = document.getElementById("copied");
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(CA);
+      } catch {
+        const area = document.createElement("textarea");
+        area.value = CA;
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+      }
+      note.classList.remove("hidden");
+      btn.textContent = "COPIED";
+      setTimeout(() => {
+        note.classList.add("hidden");
+        btn.textContent = "COPY CA";
+      }, 1800);
+    });
+  </script>
+</body>
+</html>
